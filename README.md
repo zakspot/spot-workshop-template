@@ -1,0 +1,1 @@
+# spot-workshop-template
