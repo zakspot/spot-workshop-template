@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-2-1
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-dev
+        image: nginx
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "256m"
+      nodeSelector:
+        env: ocean-workshop
+        example: "2"
+      tolerations:
+      - key: "example"
+        operator: "Equal"
+        value: "2"
+        effect: "NoSchedule"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-2-2
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-dev
+        image: nginx
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "256m"
+      nodeSelector:
+        env: ocean-workshop
+        example: "2"

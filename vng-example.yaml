@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-1
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-dev
+        image: nginx
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "256m"
+      nodeSelector:
+        env: ocean-workshop
+        example: "1"
