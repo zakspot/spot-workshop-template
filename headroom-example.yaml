@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-3-1
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-dev
+        image: nginx
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "256m"
+      nodeSelector:
+        example: 3-1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-3-2
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-dev
+        image: nginx
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "256m"
+      nodeSelector:
+        example: 3-2
